@@ -61,17 +61,17 @@
         <br>
         <!-- Muunnetaan xxx , yyy desimaalin tarkkudella. Muunnettava lämpötila:-->
         <div class="row justify-content-center">
-            <div class="card col-auto text-start">
+            <div class="card col-lg-5 text-start"> <!-- col-auto -->
                 <div class="card-body ps-2 pe-2">
-                    <form>
+                    <form id="lomake">
                         <div class="row">
                             <div class="col-auto">
                                 <label class="form-check-label mt-1" for="selectCF">Muunnetaan</label>
                             </div>
                             <div class="col-auto">
                                 <select class="form-select" id="selectCF">
-                                    <option value="F" selected>Celsiukset Fahrenheitiksi</option>
-                                    <option value="C">Fahrenheitit Celsiukseksi</option>
+                                    <option value="C" selected>Celsiukset Fahrenheitiksi</option>
+                                    <option value="F">Fahrenheitit Celsiukseksi</option>
                                 </select>
                             </div>
                         </div>
@@ -87,18 +87,19 @@
                                 </select>
                             </div>
                             <div class="col-auto">
-                                <label class="mt-1 form-check-label">desimaalin tarkkuudella.</label>
+                                <label for="selectDes" class="mt-1 form-check-label">desimaalin tarkkuudella.</label>
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-auto">
-                                <label for="inputAste" class="mt-2 form-check-label">Muunnettava lämpötila on</label>
+                                <label for="inputaste" class="mt-2 form-check-label">Muunnettava lämpötila on</label>
                             </div>
-                            <div class="col-4">
-                                <input type="text" name="inputAste" id="inputAste" class="form-control">
+                            <div class="col-4" style="position: relative;">
+                                <input type="text" name="inputAste" id="inputaste" class="form-control">
+                                <div class="invalid-tooltip">Syötä lukuarvo!</div>
                             </div>
                             <div class="col-auto">
-                                <label class="form-check-label mt-2">ºC</label>
+                                <label for="inputaste" class="form-check-label mt-2" id="yksikko">&degC</label>
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -106,27 +107,16 @@
                                 <button type="submit" class="btn btn-primary">Muunna</button>
                             </div>
                         </div>
-<!--
-                        <div class="row">
-                            <label class="mt-1 mb-1">ja näytetään lopputulos</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="radioDes" id="radio1des" checked>
-                            <label class="form-check-label" for="radio1des">yhden</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="radioDes" id="radio2des">
-                            <label class="form-check-label" for="radio2des">kahden</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="radioDes" id="radio3des">
-                            <label class="form-check-label" for="radio3des">kolmen</label>
-                        </div>
-                        <div class="row">
-                            <label>desimaalin tarkkuudella</label>
-                        </div>
--->
                     </form>
+                    <div class="card text-center" id="tuloskortti" style="transition: all 1s; opacity: 0; max-height: 0">
+                        <div class="card-header" id="vastausotsikko">
+                            on
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text fs-1 mb-0" id="vastaus"></p>
+                            <div class="alert alert-info" id="nollapiste" style="position: absolute; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 1s;">Lämpötila on alle absoluuttisen nollapisteen!</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -135,6 +125,7 @@
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <!-- Oma JavaScript-->
+    <script src="teema.js"></script>    
     <script src="skriptit.js"></script>    
 </body>
 </html>
