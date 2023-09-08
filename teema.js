@@ -3,16 +3,15 @@ if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').match
 }
 
 function vaihdaTeema() {
-    const teema = document.getElementById('htmltagi').getAttribute('data-bs-theme');
+    const teema = document.documentElement.getAttribute('data-bs-theme');
     if (teema != null) {
-        // vaihdetaan data-bs-theme toiseksi
-        let uusiTeema = teema == 'light' ? 'dark' : 'light';
-        document.getElementById('htmltagi').setAttribute('data-bs-theme',uusiTeema);
-        // kuvake vanhan teeman mukaan
-        document.getElementById('teemaikoni').innerHTML = teema + '_mode';
+        let uusiTeema = (teema == 'light') ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-bs-theme',uusiTeema);
+        document.querySelector('#teemakuvake').innerHTML = teema + '_mode';
     }
 }
 
-document.getElementById('teemaikoni').addEventListener('click', () => {
+document.querySelector('#teemakuvake').addEventListener('click', () => {
     vaihdaTeema();
 });
+
